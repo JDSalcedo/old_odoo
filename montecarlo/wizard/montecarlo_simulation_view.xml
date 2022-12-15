@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+		<record id="montecarlo_simulation_wizard_view" model="ir.ui.view">
+			<field name="name">montecarlo.simulation.wizard.view</field>
+			<field name="model">montecarlo.simulation.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Simulation">
+					<header></header>
+					<sheet string="Simulation">
+						<group>
+							<group>
+								<field name="iterations" required="1"/>
+							</group>
+							<group>
+								<field name="simulation_date" readonly="1"/>
+								<field name="project_id" readonly="1"/>
+							</group>
+						</group>
+						<separator string="Processes" />
+						<field name="processes_ids" nolabel="1" widget="one2many_list" readonly="1">
+							<tree string="Processes">
+								<field name="name" />
+								<field name="start_day" />
+								<field name="final_day" />
+								<field name="probability_success" />
+							</tree>
+						</field>
+					</sheet>
+					<footer>
+						<button string="Simulate" name="mc_simulation" type="object" default_focus="1" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+		
+		<record id="action_montecarlo_simulation_wizard" model="ir.actions.act_window">
+			<field name="name">Simulation</field>
+			<field name="res_model">montecarlo.simulation.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="montecarlo_simulation_wizard_view"/>
+			<field name="target">new</field>
+		</record>
+	</data>
+</odoo>

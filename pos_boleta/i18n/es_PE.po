@@ -1,0 +1,39 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * pos_boleta
+# 
+# Translators:
+# Juan D. Salcedo Salazar <salcedo.salazar@gmail.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-10 13:27+0000\n"
+"PO-Revision-Date: 2017-09-10 13:27+0000\n"
+"Last-Translator: Juan D. Salcedo Salazar <salcedo.salazar@gmail.com>, 2017\n"
+"Language-Team: --\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: pos_boleta
+#: model:ir.model.fields,help:pos_boleta.field_pos_config_boleta_journal_id
+msgid "Accounting journal used to create Boletas."
+msgstr "Diario contable utilizado para crear boletas."
+
+#. module: pos_boleta
+#: model:ir.model.fields,field_description:pos_boleta.field_pos_config_boleta_journal_id
+msgid "Boleta Journal"
+msgstr "Diario de boleta"
+
+#. module: account
+#: model:ir.actions.report.xml,name:account.account_invoice_action_report_duplicate
+msgid "Duplicates"
+msgstr "Boleta de Venta"
+
+#. module: account
+#: model:ir.actions.report.xml,name:account.account_invoices
+msgid "Invoices"
+msgstr "Factura de Venta"

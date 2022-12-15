@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_student_file,student.file,model_student_file,group_student_file_user,1,1,1,1
+access_incidence_file,incidence.file,model_incidence_file,group_student_file_user,1,1,1,1

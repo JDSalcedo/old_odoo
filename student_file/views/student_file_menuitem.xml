@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+		<!-- Top menu item -->
+		<menuitem 
+			id="menu_student"
+			name="Student"
+			web_icon="student_file,static/description/icon.png"
+			sequence="80" />
+		<!-- Icon made by 'Freepik' from www.flaticon.com --> 
+		<menuitem
+			id="menu_register"
+			name="Register"
+			parent="menu_student"
+			sequence="1" />
+		
+	</data>
+</odoo>

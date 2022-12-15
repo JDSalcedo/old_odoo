@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		
+		<!-- Project Kanban -->
+		<record id="montecarlo_project_kanban_view" model="ir.ui.view">
+            <field name="name">montecarlo.project.kanban</field>
+            <field name="model">montecarlo.project</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="name"/>
+                    <field name="count_processes"/>
+                    <field name="description" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <strong><span><t t-esc="record.name.value"/></span></strong>
+                                    </div>
+                                    <div class="col-xs-6 pull-right text-right">
+                                    	<!-- span title="Weeks #"><i class="fa fa-calendar"/> <t t-esc="record.weeks.value"/> </span-->
+                                        <span title="Processes"><i class="fa fa-cubes"/> <t t-esc="record.count_processes.value"/> </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                	<div class="col-xs-12 text-muted">
+                                		<field name="description" />
+                                	</div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+		
+		<!-- Project Form -->
+		<record id="montecarlo_project_form_view" model="ir.ui.view">
+			<field name="name">montecarlo.project.form.view</field>
+			<field name="model">montecarlo.project</field>
+			<field name="arch" type="xml">
+				<form string="Project">
+					<header>
+						<button name="critical_path" type="object" string="Critical Path" class="oe_highlight" 
+							help="Run Critical Path Method for the current Project"/>
+						<button name="%(montecarlo.action_montecarlo_simulation_wizard)d" type="action" string="Start MC Simulation"
+							context="{'default_project_id':id}" class="oe_highlight"/>
+					</header>
+					<sheet string="Project">
+						<div class="oe_button_box" name="button_box">
+		                    <!--button type="object"
+		                        name="show_sprints"
+		                        class="oe_stat_button"
+		                        icon="fa-cubes">
+		                        <field name="count_sprints" widget="statinfo" string="Sprints"/>
+		                    </button-->
+		                    <button type="object"
+		                        name="show_processes"
+		                        class="oe_stat_button"
+		                        icon="fa-cubes">
+		                        <field name="count_processes" widget="statinfo" string="Processes"/>
+		                    </button>
+		                    <button type="object"
+		                        name="show_results"
+		                        class="oe_stat_button"
+		                        icon="fa-table">
+		                        <div class="o_form_field o_stat_info">
+		                            <span class="o_stat_text">Simulation</span>
+		                            <span class="o_stat_text">Statistics</span>
+		                        </div>
+		                    </button>
+		                </div>
+		                <h1 class="oe_title">
+	                        Project:
+	                    </h1>
+						<div class="oe_title">
+		                    <label for="name" class="oe_edit_only"/>
+		                    <h2><field name="name" placeholder="Project Name"/></h2>
+		                </div>
+						<group>
+							<group>
+								<field name="start_day" required="1" />
+							</group>
+							<group>
+								<field name="final_day" required="1" />
+							</group>
+						</group>
+						<group>
+							<group>
+								<field name="client_tolerance" required="1" />
+							</group>
+						</group>
+						<separator string="Critical Path" />
+						<group>
+							<field name="criticalpath_duration" readonly="1" />
+							<field name="criticalpath" readonly="1"/>
+						</group>
+						<!--separator string="Sprints" />
+						<field name="sprints_ids" nolabel="1" widget="one2many_list" context="{'default_project_id': active_id}">
+							<tree string="Sprints" editable="botton">
+								<field name="sequence" widget="handle"/>
+								<field name="name" />
+								<field name="client_tolerance" />
+								<field name="count_activities" readonly="1"/>
+								<button name="show_activities" string="Activities" 
+			                    	type="object" icon="fa fa-file-text-o fa-lg" />
+							</tree>
+						</field-->
+						<separator string="Description" />
+						<field name="description" />
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Project Tree -->
+		<record id="montecarlo_project_tree_view" model="ir.ui.view">
+			<field name="name">montecarlo.project.list.view</field>
+			<field name="model">montecarlo.project</field>
+			<field name="arch" type="xml">
+				<tree string="Projects">
+					<field name="name" />
+					<field name="start_day" />
+					<field name="final_day" />
+					<!--field name="count_sprints" /-->
+				</tree>
+			</field>
+		</record>
+		
+		<!-- Project Pivot -->
+		<record id="montecarlo_project_pivot_view" model="ir.ui.view">
+			<field name="name">montecarlo.project.pivot.view</field>
+			<field name="model">montecarlo.project</field>
+			<field name="arch" type="xml">
+				<pivot string="Project" display_quantity="true">
+					<field name="name" />
+				</pivot>
+			</field>
+		</record>
+		
+		<!-- Action -->
+		<record id="action_montecarlo_project" model="ir.actions.act_window">
+			<field name="name">Projects</field>
+			<field name="res_model">montecarlo.project</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">kanban,tree,form</field>
+			<field name="view_id" eval="False" />
+			<!-- field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('montecarlo_project_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('montecarlo_project_form_view')})]"/-->
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a Project.
+				</p>
+			</field>
+		</record>
+		
+		<!-- Action Project Form View -->
+		<record id="action_montecarlo_project_form_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="2" />
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="montecarlo_project_form_view" />
+			<field name="act_window_id" ref="action_montecarlo_project" />
+		</record>
+		
+		<!-- Action Project Tree View -->
+		<record id="action_montecarlo_project_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="3" />
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="montecarlo_project_tree_view" />
+			<field name="act_window_id" ref="action_montecarlo_project" />
+		</record>
+		
+		<!-- Action Project Kanban View -->
+		<record id="action_montecarlo_project_kanban_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1" />
+			<field name="view_mode">kanban</field>
+			<field name="view_id" ref="montecarlo_project_kanban_view" />
+			<field name="act_window_id" ref="action_montecarlo_project" />
+		</record>
+		
+		<!-- Menu 'Projects' -->
+		<menuitem id="menu_action_montecarlo_project" action="action_montecarlo_project" parent="menu_montecarlo_projects" sequence="1" />
+		
+		<!-- Sprint Kanban -->
+		<record id="montecarlo_sprint_kanban_view" model="ir.ui.view">
+            <field name="name">montecarlo.sprint.kanban</field>
+            <field name="model">montecarlo.sprint</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="project_id" class="o_kanban_mobile">
+                    <field name="name"/>
+                    <field name="client_tolerance"/>
+                    <field name="criticalpath" />
+                    <field name="criticalpath_duration" />
+                    <field name="count_activities" />
+                    <field name="project_id" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <strong><span><t t-esc="record.name.value"/></span></strong>
+                                    </div>
+                                    <div class="col-xs-6 pull-right text-right">
+                                    	<span title="Client Tolerance(days)"><i class="fa fa-bell-o"/> <t t-esc="record.client_tolerance.value"/> </span>
+                                        <span title="Activities"><i class="fa fa-code-fork"/> <t t-esc="record.count_activities.value"/> </span>
+                                        <span title="Critical Path Duration(days)"><i class="fa fa-clock-o"/> <t t-esc="record.criticalpath_duration.value"/> </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                	<div class="col-xs-6 ">
+                                	</div>
+                                	<div class="col-xs-6 pull-right text-right">
+                                		<span title="Project"><t t-esc="record.project_id.value" /></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+		
+		<!-- Sprint Form -->
+		<record id="montecarlo_sprint_form_view" model="ir.ui.view">
+			<field name="name">montecarlo.sprint.form.view</field>
+			<field name="model">montecarlo.sprint</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<button name="critical_path" type="object" string="Critical Path" class="oe_highlight" 
+							help="Run Critical Path Method for the current Sprint."/>
+						<!--button name="run_simulation" type="object" string="BFS" /-->
+					</header>
+					<sheet>
+						<h1 class="oe_title">
+	                        Sprint:
+	                    </h1>
+						<div class="oe_title">
+		                    <label for="name" class="oe_edit_only"/>
+		                    <h2><field name="name" placeholder="Sprint Name"/></h2>
+		                </div>
+						<group>
+							<group>
+								<field name="client_tolerance" />
+							</group>
+							<group>
+								<field name="project_id" />
+							</group>
+						</group>
+						<separator string="Critical Path" />
+						<group>
+							<field name="criticalpath_duration" readonly="1" />
+							<field name="criticalpath" readonly="1"/>
+						</group>
+						<separator string="Activities"/>
+						<group class="oe_edit_only">
+							<label for="create_acts" />
+							<div>
+								<field name="create_acts" class="oe_inline" />
+								<button name="create_activities" type="object" class="oe_inline fa fa-arrow-right" help="Click here to quickly create new activities."/>
+							</div>
+						</group>
+						<field name="activities_ids" nolabel="1" widget="one2many_list" context="{'default_sprint_id':id}">
+							<tree string="Activities">
+								<field name="large_name" />
+								<field name="duration" />
+								<field name="probability_success" />
+								<field name="start" />
+							</tree>
+						</field>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Sprint Tree -->
+		<record id="montecarlo_sprint_tree_view" model="ir.ui.view">
+			<field name="name">montecarlo.sprint.tree.view</field>
+			<field name="model">montecarlo.sprint</field>
+			<field name="arch" type="xml">
+				<tree string="Sprints">
+					<field name="name" />
+					<field name="client_tolerance" />
+					<field name="criticalpath_duration" />
+					<field name="project_id" />
+					<field name="count_activities" />
+				</tree>
+			</field>
+		</record>
+		
+		<record id="montecarlo_sprint_tree_view_b" model="ir.ui.view">
+			<field name="name">montecarlo.sprint.tree.view</field>
+			<field name="model">montecarlo.sprint</field>
+			<field name="arch" type="xml">
+				<tree string="Sprints">
+					<field name="sequence" widget="handle"/>
+					<field name="name" />
+					<field name="project_id" />
+					<field name="count_activities" />
+				</tree>
+			</field>
+		</record>
+		
+		<!-- Sprint Diagram View -->
+		<record id="montecarlo_sprint_diagram_view" model="ir.ui.view">
+			<field name="name">montecarlo.sprint.diagram.view</field>
+			<field name="model">montecarlo.sprint</field>
+			<field name="arch" type="xml">
+				<diagram string="Project Editor">
+					<node object="montecarlo.activity" bgcolor="gray:start==True">
+						<field name="name" />
+						<field name="duration" />
+					</node>
+					<arrow object="montecarlo.activity.transition" source="activity_from_id" destination="activity_to_id" label="['name']">
+						<field name="activity_from_id" />
+                    	<field name="activity_to_id" />
+					</arrow>
+				</diagram>
+			</field>
+		</record>
+		
+		<!-- Sprint Action -->
+		<record id="action_montecarlo_sprint" model="ir.actions.act_window">
+			<field name="name">Sprints</field>
+			<field name="res_model">montecarlo.sprint</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,diagram</field>
+			<field name="view_id" eval="False" />
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a Sprint.
+				</p>
+			</field>
+		</record>
+		
+		<!-- Action Sprint Form View-->
+		<record id="action_montecarlo_sprint_form_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="2" />
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="montecarlo_sprint_form_view"/>
+			<field name="act_window_id" ref="action_montecarlo_sprint" />
+		</record>
+		
+		<!-- Action Sprint Tree View-->
+		<record id="action_montecarlo_sprint_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="3" />
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="montecarlo_sprint_tree_view"/>
+			<field name="act_window_id" ref="action_montecarlo_sprint" />
+		</record>
+		
+		<!-- Action Sprint Kanban View-->
+		<record id="action_montecarlo_sprint_kanban_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1" />
+			<field name="view_mode">kanban</field>
+			<field name="view_id" ref="montecarlo_sprint_kanban_view"/>
+			<field name="act_window_id" ref="action_montecarlo_sprint" />
+		</record>
+		
+		<!-- Menu 'Sprints' -->
+		<!--menuitem id="menu_action_montecarlo_sprint" action="action_montecarlo_sprint" parent="menu_montecarlo_projects" sequence="1" /-->
+		
+		
+		<!-- Activity Kanban -->
+		<record id="montecarlo_activity_kanban_view" model="ir.ui.view">
+            <field name="name">montecarlo.activity.kanban</field>
+            <field name="model">montecarlo.activity</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="sprint_id" class="o_kanban_mobile">
+                    <field name="name"/>
+                    <field name="duration"/>
+                    <field name="sprint_id" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <strong><span><t t-esc="record.name.value"/></span></strong>
+                                    </div>
+                                    <div class="col-xs-6 pull-right text-right">
+                                    	<span title="Duration(days)"><i class="fa fa-clock-o"/> <t t-esc="record.duration.value"/> </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                	<div class="col-xs-6 ">
+                                	</div>
+                                	<div class="col-xs-6 pull-right text-right">
+                                        <span title="Sprint"><t t-esc="record.sprint_id.value"/> </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+		
+		<!-- Activity Form -->
+		<record id="montecarlo_activity_form_view" model="ir.ui.view">
+			<field name="name">montecarlo.activity.form.view</field>
+			<field name="model">montecarlo.activity</field>
+			<field name="arch" type="xml">
+				<form>
+					<header></header>
+					<sheet>
+						<h1 class="oe_title">
+	                        Activity:
+	                    </h1>
+						<div class="oe_title">
+		                    <label for="large_name" class="oe_edit_only"/>
+		                    <h2><field name="large_name" placeholder="Activity Name"/></h2>
+		                </div>
+						<group>
+							<group>
+								<field name="name" readonly="1"/>
+								<field name="start" />
+								<field name="start_day" required="True"/>
+								<field name="final_day" required="True"/>
+							</group>
+							<group>
+								<field name="probability_success" />
+								<field name="duration" />
+								<field name="sprint_id" />
+							</group>
+						</group>
+						<group>
+							<group>
+								<field name="earliest_start" readonly="1" />
+								<field name="lastest_start" readonly="1" />
+							</group>
+							<group>
+								<field name="earliest_finish" readonly="1" />
+								<field name="lastest_finish" readonly="1" />
+							</group>
+						</group>
+						<separator string="Previous Activities"/>
+						<field name="from_ids" mode="tree" context="{'default_activity_to_id': active_id}">
+		                    <tree string="Incoming Transitions" editable="bottom">
+		                        <field name="activity_from_id" domain="[('sprint_id', '=', parent.sprint_id)]" options="{'no_create': True}" />
+		                    </tree>
+		                </field>
+		                <separator string="Next Activities"/>
+		                <field name="to_ids" mode="tree" context="{'default_activity_from_id': active_id}">
+		                    <tree string="Outgoing Transitions" editable="bottom">
+		                        <field name="activity_to_id" domain="[('sprint_id', '=', parent.sprint_id)]" options="{'no_create': True}" />
+		                    </tree>
+		                </field>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Activity Tree -->
+		<record id="montecarlo_activity_tree_view" model="ir.ui.view">
+			<field name="name">montecarlo.activity.tree.view</field>
+			<field name="model">montecarlo.activity</field>
+			<field name="arch" type="xml">
+				<tree string="Sprints">
+					<field name="large_name" />
+					<field name="duration" />
+					<field name="sprint_id" />
+				</tree>
+			</field>
+		</record>
+		
+		<!-- Activity Action -->
+		<record id="action_montecarlo_activity" model="ir.actions.act_window">
+			<field name="name">Activities</field>
+			<field name="res_model">montecarlo.activity</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">kanban,tree,form</field>
+			<field name="view_id" eval="False" />
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to create a Activity.
+				</p>
+			</field>
+		</record>
+		
+		<!-- Action Activity Form View-->
+		<record id="action_montecarlo_activity_form_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="2" />
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="montecarlo_activity_form_view"/>
+			<field name="act_window_id" ref="action_montecarlo_activity" />
+		</record>
+		
+		<!-- Action Activity Tree View-->
+		<record id="action_montecarlo_activity_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="3" />
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="montecarlo_activity_tree_view"/>
+			<field name="act_window_id" ref="action_montecarlo_activity" />
+		</record>
+		
+		<!-- Action Activity Kanban View-->
+		<record id="action_montecarlo_activity_kanban_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1" />
+			<field name="view_mode">kanban</field>
+			<field name="view_id" ref="montecarlo_activity_kanban_view"/>
+			<field name="act_window_id" ref="action_montecarlo_activity" />
+		</record>
+		
+		<!-- Menu 'Activities' -->
+		<!--menuitem id="menu_action_montecarlo_activity" action="action_montecarlo_activity" parent="menu_montecarlo_projects" sequence="1" /-->
+		
+		<!-- Process -->
+		<!-- Process Form -->
+		<record id="montecarlo_process_form_view" model="ir.ui.view">
+			<field name="name">montecarlo.process.form.view</field>
+			<field name="model">montecarlo.process</field>
+			<field name="arch" type="xml">
+				<form create="false" delete="false">
+					<header></header>
+					<sheet>
+						<h1 class="oe_title">
+	                        Process:
+	                    </h1>
+						<div class="oe_title">
+		                    <label for="large_name" class="oe_edit_only"/>
+		                    <h2><field name="large_name" placeholder="Process Name"/></h2>
+		                </div>
+						<group>
+							<group>
+								<field name="name" readonly="1"/>
+								<field name="start" />
+								<field name="start_day" required="True"/>
+								<field name="final_day" required="True"/>
+							</group>
+							<group>
+								<field name="probability_success" />
+								<field name="duration" />
+								<field name="project_id" />
+							</group>
+						</group>
+						<separator string="Critical Path"/>
+						<group>
+							<group>
+								<field name="earliest_start" readonly="1" />
+								<field name="lastest_start" readonly="1" />
+							</group>
+							<group>
+								<field name="earliest_finish" readonly="1" />
+								<field name="lastest_finish" readonly="1" />
+							</group>
+							<group>
+								<field name="slack" readonly="1" />
+							</group>
+						</group>
+						<separator string="Previous Processes"/>
+						<field name="from_ids" mode="tree" context="{'default_process_to_id': active_id}">
+		                    <tree string="Incoming Transitions" create="false" delete="false" editable="false">
+		                        <field name="process_from_id" domain="[('project_id', '=', parent.project_id)]" options="{'no_create': True}" />
+		                        <field name="process_from_start_day" readonly="1"/>
+		                        <field name="process_from_final_day" readonly="1" />
+		                        <field name="process_from_probability" readonly="1" />
+		                    </tree>
+		                </field>
+		                <separator string="Next Processes"/>
+		                <field name="to_ids" mode="tree" context="{'default_process_from_id': active_id}">
+		                    <tree string="Outgoing Transitions" create="false" delete="false" editable="false">
+		                        <field name="process_to_id" domain="[('project_id', '=', parent.project_id)]" options="{'no_create': True}" />
+		                        <field name="process_to_start_day" readonly="1"/>
+		                        <field name="process_to_final_day" readonly="1" />
+		                        <field name="process_to_probability" readonly="1" />
+		                    </tree>
+		                </field>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Process Tree -->
+		<record id="montecarlo_process_tree_view" model="ir.ui.view">
+			<field name="name">montecarlo.process.tree.view</field>
+			<field name="model">montecarlo.process</field>
+			<field name="arch" type="xml">
+				<tree string="Process" create="false" delete="false">
+					<field name="large_name" />
+					<field name="start" />
+					<field name="start_day" />
+					<field name="final_day" />
+					<field name="probability_success" />
+					<field name="project_id" />
+				</tree>
+			</field>
+		</record>
+		
+	</data>
+</odoo>

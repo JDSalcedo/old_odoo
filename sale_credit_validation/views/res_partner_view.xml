@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_partner_form_inherit_sale_credit_validation" model="ir.ui.view">
+        <field name="name">view.partner.form.inherit.sale.credit.validation</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="priority" eval="30"/>
+        <field name="arch" type="xml">
+
+            <group name="container_row_2" position="inside">
+                <group string="Credit Limit" name="credit">
+                    <label for="credit_limit" string="Credit Limit"/>
+                    <div name="credit_div">
+                        <field name="credit_limit" readonly="1" class="oe_inline"/>
+                        <button type="object"
+                            class="oe_inline"
+                            id="credit_limit_update_button"
+                            icon="fa-wrench"
+                            name="open_partner_credit_limit_update"
+                            attrs="{'invisible': [('customer', '=', False)]}"
+                            context="{'default_partner_id': active_id}">
+                        </button>
+                        <button type="object"
+                            class="oe_inline"
+                            id="credit_limit_button"
+                            icon="fa-list-ul"
+                            name="open_partner_credit_limit_history"
+                            attrs="{'invisible': [('customer', '=', False)]}"
+                            context="{'default_partner_id': active_id}">
+                        </button>
+                    </div>
+                    <!--<field name="credit_limit"/>-->
+                    <field name="spent_money"/>
+                </group>
+            </group>
+
+        </field>
+    </record>
+
+    <record id="res_partner_credit_limit_view_form" model="ir.ui.view">
+        <field name="name">res.partner.credit.limit.view.form</field>
+        <field name="model">res.partner.credit.limit</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="finish_date"/>
+                            <field name="name"/>
+                            <field name="valid"/>
+                        </group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="user_id"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="company_currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="res_partner_credit_limit_view_tree" model="ir.ui.view">
+        <field name="name">res.partner.credit.limit.view.tree</field>
+        <field name="model">res.partner.credit.limit</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="start_date"/>
+                <field name="finish_date"/>
+                <field name="name"/>
+                <field name="valid"/>
+                <field name="partner_id"/>
+                <field name="user_id"/>
+                <field name="company_id" invisible="1"/>
+                <field name="company_currency_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale_credit_validation_action" model="ir.actions.act_window">
+        <field name="name">Credit Limit</field>
+        <field name="res_model">res.partner.credit.limit</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="res_partner_credit_limit_view_tree"/>
+    </record>
+
+</odoo>

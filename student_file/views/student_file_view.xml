@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+		<!-- Student Kanban View -->
+        <record model="ir.ui.view" id="view_student_file_kanban">
+            <field name="name">view.student.file.kanban</field>
+            <field name="model">student.file</field>
+            <field name="arch" type="xml">
+                <kanban class="o_student_file_kanban">
+                    <field name="name"/>
+                    <field name="surname"/>
+                    <field name="street"/>
+                    <field name="dni"/>
+                    <field name="count_incidences"/>
+                    <field name="image_small"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_student_file_kanban">
+                                <div class="o_kanban_image">
+                                    <t t-if="record.image_small.raw_value">
+                                        <img t-att-src="kanban_image('student.file', 'image_small', record.id.value)"/>
+                                    </t>
+                                </div>
+                                <div class="oe_kanban_details">
+                                	<strong class="oe_partner_heading o_text_overflow"><field name="name"/></strong>
+                                    <div class="col-xs-6 pull-right text-right">
+                                        <span title="Incidences"><i class="fa fa-exclamation-circle"/> <t t-esc="record.count_incidences.value"/> </span>
+                                    </div>
+                                    <ul>
+                                        <li t-if="record.surname.raw_value"><field name="surname"/></li>
+                                        <li t-if="record.dni.raw_value"><field name="dni"/></li>
+                                        <li t-if="record.street.raw_value"><field name="street"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+		
+		<!-- Student Form View -->
+		<record id="view_student_file_form" model="ir.ui.view">
+            <field name="name">view.student.file.form</field>
+            <field name="model">student.file</field>
+            <field name="arch" type="xml">
+                <form string="Student File">
+                    <header>
+                    </header>
+                    <sheet>
+                        <field name="id" invisible="1"/>
+                        <div class="oe_button_box" name="button_box">
+		                    <button type="object"
+		                        name="show_incidences"
+		                        class="oe_stat_button"
+		                        icon="fa-exclamation-circle">
+		                        <field name="count_incidences" widget="statinfo" string="Incidences"/>
+		                    </button>
+		                </div>
+                        <div>
+                        </div>
+                        <field name="image" widget='image' class="oe_avatar" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name" required="1"/></h1>
+                            <label for="surname" class="oe_edit_only"/>
+                            <h2><field name="surname" required="1"/></h2>
+                            <group>
+                                <field name="partner_id" readonly="1" required="0" groups="base.group_no_one"
+                                        attrs="{'invisible': [('id', '=', False)]}"/>
+                            </group>
+                        </div>
+                        <group>
+                        	<group>
+	                        	<field name="street" required="1"/>
+                        		<field name="dni" required="1"/>
+                        		<field name="brothers" />
+                        	</group>
+                        	<group>
+                        		<field name="birthdate" />
+                        		<field name="age" />
+                        	</group>
+                        </group>
+                        <separator string="Information about parents" />
+                        <group>
+                        	<group>
+                        		<field name="father" />
+                        		<field name="fathers_birthdate" />
+                        		<field name="fathers_age" />
+                        		<field name="fathers_occupation" />
+                        		<field name="fathers_mobile" />
+                        	</group>
+                        	<group>
+                        		<field name="mother" />
+                        		<field name="mothers_birthdate" />
+                        		<field name="mothers_age" />
+                        		<field name="mothers_occupation" />
+                        		<field name="mothers_mobile" />
+                        	</group>
+                       		<group>
+                       			<field name="lives_with_type" />
+                       		</group>
+                       		<group>
+                       			<field name="reason" attrs="{'readonly':[('lives_with_type', '!=', 'other')]}"/>
+                       		</group>
+                        </group>
+                        <separator string="Other data" />
+                        <group>
+                        	<group>
+                        		<field name="beggin" />
+                        		<field name="repeating" />
+                        	</group>
+                        	<group>
+                        		<field name="status" />
+                        	</group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Student Tree View -->
+        <record id="view_student_file_tree" model="ir.ui.view">
+			<field name="name">view.student.file.tree</field>
+			<field name="model">student.file</field>
+			<field name="arch" type="xml">
+				<tree string="Student">
+					<field name="name" />
+					<field name="surname" />
+					<field name="dni" />
+					<field name="street" />
+					<field name="birthdate" />
+					<field name="age" />
+					<field name="brothers" />
+					<field name="count_incidences" />
+				</tree>
+			</field>
+		</record>
+		
+		<!-- Student Pivot -->
+		<record id="view_student_file_pivot" model="ir.ui.view">
+			<field name="name">view.student.file.pivot</field>
+			<field name="model">student.file</field>
+			<field name="arch" type="xml">
+				<pivot string="Student" display_quantity="true">
+					<field name="name" />
+					
+				</pivot>
+			</field>
+		</record>
+		
+		<!-- Search -->
+		<record id="student_file_search" model="ir.ui.view">
+            <field name="name">student.file.search</field>
+            <field name="model">student.file</field>
+            <field name="arch" type="xml">
+                <search string="Search Student">
+                	<field name="name"/>
+                	<field name="surname"/>
+                	<field name="dni"/>
+               </search>
+            </field>
+        </record>
+		
+		<!-- Action -->
+		<record id="action_student_file" model="ir.actions.act_window">
+			<field name="name">Student File</field>
+			<field name="res_model">student.file</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">kanban,tree,form,pivot</field>
+			<field name="view_id" eval="False" />
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to register a Student.
+				</p>
+			</field>
+		</record>
+		
+		<!-- Menu 'Student' -->
+		<menuitem id="menu_action_student_file" action="action_student_file" parent="menu_register" sequence="1" />
+	
+	</data>
+</odoo>

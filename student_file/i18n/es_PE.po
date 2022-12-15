@@ -1,0 +1,748 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* student_file
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-12 00:11+0000\n"
+"PO-Revision-Date: 2018-07-12 00:11+0000\n"
+"Last-Translator: Salcedo Salazar Juan Diego <salcedo.salazar@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_brothers
+msgid "# Brothers"
+msgstr "# Hermanos"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_active
+msgid "Active"
+msgstr "Activo"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_type
+msgid "Address Type"
+msgstr "Tipo de Dirección"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_age
+msgid "Age"
+msgstr "Edad"
+
+#. module: student_file
+#: selection:incidence.file,derived_by:0
+msgid "Assistant"
+msgstr "Auxiliar"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_bank_ids
+msgid "Banks"
+msgstr "Bancos"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_barcode
+msgid "Barcode"
+msgstr "Código de Barras"
+
+#. module: student_file
+#: selection:incidence.file,reason_type:0
+msgid "Behavior"
+msgstr "Comportamiento"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_birthdate
+msgid "Birthdate"
+msgstr "Cumpleaños"
+
+#. module: student_file
+#: selection:student.file,lives_with_type:0
+msgid "Both parents"
+msgstr "Ambos padres"
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_student_file_is_company
+msgid "Check if the contact is a company, otherwise it is a person"
+msgstr "Marque esta casilla si el contacto es una compañía. En caso contrario, será una persona."
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_student_file_customer
+msgid "Check this box if this contact is a customer."
+msgstr "Marque esta casilla si este contacto es un cliente."
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_student_file_supplier
+msgid "Check this box if this contact is a vendor. If it's not checked, purchase people will not see it when encoding a purchase order."
+msgstr "Marque esta casilla si el contacto es un proveedor. Si no está marcada, el equipo de compras no lo verá cuando esté haciendo una orden de compra."
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_student_file_employee
+msgid "Check this box if this contact is an Employee."
+msgstr "Marque si el contacto es un empleado"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_city
+msgid "City"
+msgstr "Provincia"
+
+#. module: student_file
+#: model:ir.actions.act_window,help:student_file.action_student_file
+msgid "Click to register a Student."
+msgstr "Click para registrar un Estudiante."
+
+#. module: student_file
+#: model:ir.actions.act_window,help:student_file.action_incidence_file
+msgid "Click to register an Incidence."
+msgstr "Click para registrar un Incidente."
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_color
+msgid "Color Index"
+msgstr "Índice de Color"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_commercial_partner_id
+msgid "Commercial Entity"
+msgstr "Entidad comercial"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_company_name
+msgid "Company Name"
+msgstr "Nombre de la Compañía"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_commercial_company_name
+msgid "Company Name Entity"
+msgstr "Entidad del nombre de la compañía"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_company_type
+msgid "Company Type"
+msgstr "Tipo de Compañía"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_contact_address
+msgid "Complete Address"
+msgstr "Dirección completa"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_child_ids
+msgid "Contacts"
+msgstr "Contactos"
+
+#. module: student_file
+#: selection:student.file,status:0
+msgid "Continuous"
+msgstr "Continuo"
+
+#. module: student_file
+#: selection:incidence.file,derived_by:0
+msgid "Coordinator"
+msgstr "Coordinador"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_counseling
+msgid "Counseling"
+msgstr "Consejería"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_country_id
+msgid "Country"
+msgstr "País"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_create_uid
+#: model:ir.model.fields,field_description:student_file.field_student_file_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_create_date
+#: model:ir.model.fields,field_description:student_file.field_student_file_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_credit_limit
+msgid "Credit Limit"
+msgstr "Límite de Crédito"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_dni
+msgid "DNI"
+msgstr "DNI"
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_student_file_dni
+msgid "DNI is a number of size 8"
+msgstr "DNI es un número de tamaño 8"
+
+#. module: student_file
+#: code:addons/student_file/models/student.py:67
+#, python-format
+msgid "DNI should have 8 characters."
+msgstr "DNI debe tener 8 caracteres."
+
+#. module: student_file
+#: code:addons/student_file/models/student.py:65
+#, python-format
+msgid "DNI should have just numbers."
+msgstr "DNI debe tener solo números."
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_date
+#: model:ir.model.fields,field_description:student_file.field_student_file_date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_derived_by
+msgid "Derived by"
+msgstr "Derivado por"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: student_file
+#: selection:incidence.file,derived_by:0
+msgid "Director"
+msgstr "Director"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_display_name
+#: model:ir.model.fields,field_description:student_file.field_student_file_display_name
+msgid "Display Name"
+msgstr "Nombre a Mostrar"
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_student_file_partner_share
+msgid "Either customer (no user), either shared user. Indicated the current partner is a customer without access or with a limited access created for sharing data."
+msgstr "Ya sea cliente (no usuario), como usuario compartido. Indica si el socio actual es un cliente sin acceso o con un acceso limitado creado para compartir datos."
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_email
+msgid "Email"
+msgstr "Email"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: student_file
+#: selection:incidence.file,reason_type:0
+msgid "Family"
+msgstr "Familia"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_father
+#: selection:student.file,lives_with_type:0
+msgid "Father"
+msgstr "Padre"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_fathers_age
+msgid "Father's Age"
+msgstr "Edad del Padre"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_fathers_birthdate
+msgid "Father's Birthdate"
+msgstr "Cumpleaños del Padre"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_fathers_mobile
+msgid "Father's Mobile"
+msgstr "Celular del Padre"
+
+#. module: student_file
+#: code:addons/student_file/models/student.py:78
+#, python-format
+msgid "Father's Mobile should have 9 characters."
+msgstr "Celular del Padre debe tener 9 caracteres."
+
+#. module: student_file
+#: code:addons/student_file/models/student.py:76
+#, python-format
+msgid "Father's Mobile should have just numbers."
+msgstr "Celular del Padre debe tener solo números."
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_fathers_occupation
+msgid "Father's Occupation"
+msgstr "Ocupación del Padre"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_fax
+msgid "Fax"
+msgstr "Fax"
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_student_file_email_formatted
+msgid "Format email address \"Name <email@domain>\""
+msgstr "Dirección email formatado \"Nombre <email@domain>\""
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_email_formatted
+msgid "Formatted Email"
+msgstr "Email formatado"
+
+#. module: student_file
+#: model:ir.ui.view,arch_db:student_file.incidence_file_search
+msgid "Group By"
+msgstr "Agrupar Por"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_id
+#: model:ir.model.fields,field_description:student_file.field_student_file_id
+msgid "ID"
+msgstr "ID"
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_student_file_lang
+msgid "If the selected language is loaded in the system, all documents related to this contact will be printed in this language. If not, it will be English."
+msgstr "Si el idioma seleccionado está cargado en el sistema, todos los documentos relacionados con el contacto se imprimirán en este idioma. Si no, se imprimirán en inglés."
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_image
+#: model:ir.model.fields,field_description:student_file.field_student_file_image
+msgid "Image"
+msgstr "Imagen"
+
+#. module: student_file
+#: model:ir.ui.view,arch_db:student_file.view_incidence_file_pivot
+#: model:ir.ui.view,arch_db:student_file.view_incidence_file_tree
+msgid "Incidence"
+msgstr "Incidencia"
+
+#. module: student_file
+#: model:ir.actions.act_window,name:student_file.action_incidence_file
+#: model:ir.ui.menu,name:student_file.menu_action_incidence_file
+#: model:ir.ui.view,arch_db:student_file.view_incidence_file_form
+msgid "Incidence File"
+msgstr "Registro de Incidencia"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_name
+msgid "Incidence Reference"
+msgstr "Referencia de Incidencia"
+
+#. module: student_file
+#: code:addons/student_file/models/student.py:160
+#: model:ir.model.fields,field_description:student_file.field_student_file_incidences_ids
+#: model:ir.ui.view,arch_db:student_file.view_student_file_form
+#: model:ir.ui.view,arch_db:student_file.view_student_file_kanban
+#, python-format
+msgid "Incidences"
+msgstr "Incidencias"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_count_incidences
+msgid "Incidences #"
+msgstr "Incidencias #"
+
+#. module: student_file
+#: model:ir.ui.view,arch_db:student_file.view_student_file_form
+msgid "Information about parents"
+msgstr "Información de los Padres"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_ref
+msgid "Internal Reference"
+msgstr "Referencia Interna"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_is_company
+msgid "Is a Company"
+msgstr "Es una Compañía"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_customer
+msgid "Is a Customer"
+msgstr "Es un Cliente"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_supplier
+msgid "Is a Vendor"
+msgstr "Es un Proveedor"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_function
+msgid "Job Position"
+msgstr "Puesto de Trabajo"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_lang
+msgid "Language"
+msgstr "Idioma"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file___last_update
+#: model:ir.model.fields,field_description:student_file.field_student_file___last_update
+msgid "Last Modified on"
+msgstr "Ultima Modificación en"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_write_uid
+#: model:ir.model.fields,field_description:student_file.field_student_file_write_uid
+msgid "Last Updated by"
+msgstr "Actualizado última vez por"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_write_date
+#: model:ir.model.fields,field_description:student_file.field_student_file_write_date
+msgid "Last Updated on"
+msgstr "Ultima Actualización"
+
+#. module: student_file
+#: selection:incidence.file,reason_type:0
+msgid "Learning"
+msgstr "Aprendizaje"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_lives_with_type
+msgid "Lives With"
+msgstr "Vive con"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_image_medium
+#: model:ir.model.fields,field_description:student_file.field_student_file_image_medium
+msgid "Medium-sized image"
+msgstr "Imagen de tamaño mediano"
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_incidence_file_image_medium
+#: model:ir.model.fields,help:student_file.field_student_file_image_medium
+msgid "Medium-sized image of this contact. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+msgstr "Imagen mediana de este contacto. Se redimensiona automáticamente a 128x128 px, con el ratio de aspecto preservado. Se usa este campo en las vistas los formularios y en algunas vistas de kanban."
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_mobile
+msgid "Mobile"
+msgstr "Celular"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_mother
+#: selection:student.file,lives_with_type:0
+msgid "Mother"
+msgstr "Madre"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_mothers_age
+msgid "Mother's Age"
+msgstr "Edad de la Madre"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_mothers_birthdate
+msgid "Mother's Birthdate"
+msgstr "Cumpleaños de la Madre"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_mothers_mobile
+msgid "Mother's Mobile"
+msgstr "Celular de la Madre"
+
+#. module: student_file
+#: code:addons/student_file/models/student.py:89
+#, python-format
+msgid "Mother's Mobile should have 9 characters."
+msgstr "Celular de la Madre debe tener 9 caracteres."
+
+#. module: student_file
+#: code:addons/student_file/models/student.py:87
+#, python-format
+msgid "Mother's Mobile should have just numbers."
+msgstr "Celular de la Madre debe terner solo números."
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_mothers_occupation
+msgid "Mother's Occupation"
+msgstr "Ocupación de la Madre"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: student_file
+#: code:addons/student_file/models/incidence.py:10
+#: code:addons/student_file/models/incidence.py:34
+#: code:addons/student_file/models/incidence.py:36
+#: code:addons/student_file/models/incidence.py:38
+#: selection:student.file,status:0
+#, python-format
+msgid "New"
+msgstr "Nuevo"
+
+#. module: student_file
+#: selection:student.file,repeating:0
+msgid "No"
+msgstr "No"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_comment
+msgid "Notes"
+msgstr "Notas"
+
+#. module: student_file
+#: model:ir.ui.view,arch_db:student_file.view_student_file_form
+msgid "Other data"
+msgstr "Otros datos"
+
+#. module: student_file
+#: selection:student.file,lives_with_type:0
+msgid "Other family"
+msgstr "Otros familiares"
+
+#. module: student_file
+#: selection:incidence.file,reason_type:0
+msgid "Others"
+msgstr "Otros"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_parent_name
+msgid "Parent name"
+msgstr "Nombre Padre"
+
+#. module: student_file
+#: selection:incidence.file,reason_type:0
+msgid "Parents interview"
+msgstr "Entrevista a P.P F.F"
+
+#. module: student_file
+#: selection:incidence.file,reason_type:0
+msgid "Personal interview"
+msgstr "Entrevista personal"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_phone
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: student_file
+#: selection:incidence.file,derived_by:0
+msgid "Psychology"
+msgstr "Psicología"
+
+#. module: student_file
+#: selection:student.file,status:0
+msgid "Re-entry"
+msgstr "Re-ingresante"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_reason_type
+#: model:ir.model.fields,field_description:student_file.field_student_file_reason
+msgid "Reason"
+msgstr "Motivo"
+
+#. module: student_file
+#: model:ir.ui.menu,name:student_file.menu_register
+msgid "Register"
+msgstr "Registro"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_parent_id
+msgid "Related Company"
+msgstr "Empresa relacionada"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_partner_id
+msgid "Related Partner"
+msgstr "Partner Relacionado"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_repeating
+msgid "Repeating"
+msgstr "Es Repitente"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_user_id
+msgid "Salesperson"
+msgstr "Vendedor"
+
+#. module: student_file
+#: model:ir.ui.view,arch_db:student_file.incidence_file_search
+msgid "Search Incidence"
+msgstr "Search Incidence"
+
+#. module: student_file
+#: model:ir.ui.view,arch_db:student_file.student_file_search
+msgid "Search Student"
+msgstr "Search Student"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_self
+msgid "Self"
+msgstr "Si mismo"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_partner_share
+msgid "Share Partner"
+msgstr "Compartir empresa"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_image_small
+#: model:ir.model.fields,field_description:student_file.field_student_file_image_small
+msgid "Small-sized image"
+msgstr "Imagen de tamaño pequeño"
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_incidence_file_image_small
+#: model:ir.model.fields,help:student_file.field_student_file_image_small
+msgid "Small-sized image of this contact. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+msgstr "Imagen de tamaño pequeño de este contacto. Se redimensiona automáticamente a 64x64 px, con el ratio de aspecto preservado. Use este campo donde se requiera una imagen pequeña."
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_state_id
+msgid "State"
+msgstr "Estado"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_status
+msgid "Status"
+msgstr "Estado"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_street
+msgid "Street"
+msgstr "Calle"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_street2
+msgid "Street2"
+msgstr "Calle2"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_incidence_file_student_id
+#: model:ir.ui.menu,name:student_file.menu_student
+#: model:ir.ui.view,arch_db:student_file.incidence_file_search
+#: model:ir.ui.view,arch_db:student_file.view_student_file_pivot
+#: model:ir.ui.view,arch_db:student_file.view_student_file_tree
+msgid "Student"
+msgstr "Estudiante"
+
+#. module: student_file
+#: model:ir.actions.act_window,name:student_file.action_student_file
+#: model:ir.module.category,name:student_file.module_student_file
+#: model:ir.ui.menu,name:student_file.menu_action_student_file
+#: model:ir.ui.view,arch_db:student_file.view_student_file_form
+msgid "Student File"
+msgstr "Registro de Estudiante"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_surname
+msgid "Surname"
+msgstr "Apellidos"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_vat
+msgid "TIN"
+msgstr "RUC"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_category_id
+msgid "Tags"
+msgstr "Etiquetas"
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_student_file_vat
+msgid "Tax Identification Number. Fill it if the company is subjected to taxes. Used by the some of the legal statements."
+msgstr "Número de identificación fiscal. Llénelo si la compañía esta sujeta a impuestos. Usado por algunos documentos legales."
+
+#. module: student_file
+#: selection:incidence.file,derived_by:0
+msgid "Teacher"
+msgstr "Profesor"
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_student_file_user_id
+msgid "The internal user that is in charge of communicating with this contact if any."
+msgstr "El usuario interno encargado de comunicarse con este contacto si lo hubiese."
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_student_file_tz
+msgid "The partner's timezone, used to output proper date and time values inside printed reports. It is important to set a value for this field. You should use the same timezone that is otherwise used to pick and render date and time values: your computer's timezone."
+msgstr "Zona horaria de la empresa, usada para mostrar la fecha y hora adecuadas en los informes impresos. Es importante establecer un valor para este campo. Debería usar la misma zona horaria que se coge en caso contrario para mostrar los valores de fecha y hora: la zona horaria de su ordenador."
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_incidence_file_image
+#: model:ir.model.fields,help:student_file.field_student_file_image
+msgid "This field holds the image used as avatar for this contact, limited to 1024x1024px"
+msgstr "Este campo contiene la imagen utilizada como avatar para este contacto, limitada a 1024x1024 px"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_tz
+msgid "Timezone"
+msgstr "Zona Horaria"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_tz_offset
+msgid "Timezone offset"
+msgstr "Zona horaria"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_title
+msgid "Title"
+msgstr "Título"
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_student_file_type
+msgid "Used to select automatically the right address according to the context in sales and purchases documents."
+msgstr "﻿Utilizado para seleccionar automáticamente la dirección correcta según el contexto en documentos de ventas y compras."
+
+#. module: student_file
+#: model:res.groups,name:student_file.group_student_file_user
+msgid "User"
+msgstr "Usuario"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_user_ids
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_website
+msgid "Website"
+msgstr "Sitio Web"
+
+#. module: student_file
+#: model:ir.model.fields,help:student_file.field_student_file_website
+msgid "Website of Partner or Company"
+msgstr "Sitio web de la empresa o compañía"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_beggin
+msgid "Year of Begginning in the Institution"
+msgstr "Año de inicio en la I.E"
+
+#. module: student_file
+#: selection:student.file,repeating:0
+msgid "Yes"
+msgstr "Si"
+
+#. module: student_file
+#: model:ir.model.fields,field_description:student_file.field_student_file_zip
+msgid "Zip"
+msgstr "Zip"
+
+#. module: student_file
+#: model:ir.model,name:student_file.model_incidence_file
+msgid "incidence.file"
+msgstr "incidence.file"
+
+#. module: student_file
+#: model:ir.model,name:student_file.model_student_file
+msgid "student.file"
+msgstr "student.file"

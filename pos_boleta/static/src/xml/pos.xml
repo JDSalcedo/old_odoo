@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" inherit_id="point_of_sale.template">
+	
+	<!--
+		Copyright 2017 Juan D. Salcedo Salazar, salcedo.salazar@gmail.com
+		License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html). 
+	-->
+
+	<t t-extend="PaymentScreenWidget">
+		<t t-jquery="div[t-attf-class*='js_invoice']" t-operation="after">
+			<div t-attf-class='button js_boleta #{ widget.pos.get_order().is_to_invoice() ? "highlight" : ""} '>
+				<i class='fa fa-file-text-o' />
+				Boleta
+			</div>
+		</t>
+	</t>
+
+</templates>

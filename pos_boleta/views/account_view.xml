@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	
+	<!--
+		Copyright 2017 Juan D. Salcedo Salazar, salcedo.salazar@gmail.com
+		License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html). 
+	-->
+	<record id="view_account_journal_form_inherit_one" model="ir.ui.view">
+		<field name="name">view.account.journal.form.inherit.one</field>
+		<field name="model">account.journal</field>
+		<field name="inherit_id" ref="account.view_account_journal_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='type']" position="after">
+				<field name="cmp_type"></field>
+			</xpath>
+		</field>
+	</record>
+	
+</odoo>

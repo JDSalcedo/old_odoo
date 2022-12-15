@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+		<!-- Project Result Pivot -->
+		<record id="montecarlo_project_result_pivot" model="ir.ui.view">
+            <field name="name">montecarlo.project.result.pivot</field>
+            <field name="model">montecarlo.project.result</field>
+            <field name="arch" type="xml">
+                <pivot string="Projects" disable_linking="True" display_quantity="true">
+                    <field name="project_id" type="row"/>
+                    <field name="result_date" interval="day" type="row" />
+                    <field name="result_time" type="row" />
+                    
+                    <field name="success_cases" type="measure"/>
+                    <field name="iterations" type="measure"/>
+					<field name="viability" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+        
+        <!-- Project Result Graph -->
+		<record id="montecarlo_project_result_graph" model="ir.ui.view">
+            <field name="name">montecarlo.project.result.graph</field>
+            <field name="model">montecarlo.project.result</field>
+            <field name="arch" type="xml">
+                <graph string="Projects" stacked="True">
+                    <field name="result_time" />
+                    <field name="result_date" interval="day"/>
+					<field name="viability" type="measure"/>
+                </graph>
+            </field>
+        </record>
+	
+		<!-- Project Result Tree -->
+		<record id="montecarlo_project_result_tree" model="ir.ui.view">
+			<field name="name">montecarlo.project.result.tree</field>
+			<field name="model">montecarlo.project.result</field>
+			<field name="arch" type="xml">
+				<tree 
+					decoration-success="category == 'viable'" decoration-danger="category == 'no_viable'" 
+					decoration-info="category == 'mod_viable'" string="Projects" create="0">
+					<field name="project_id" />
+					<field name="result_date" />
+					<field name="iterations" />
+					<field name="success_cases" />
+					<field name="viability" />
+					<field name="place" />
+					<field name="category" />
+				</tree>
+			</field>
+		</record>
+		
+		<record id="montecarlo_project_result_kanban" model="ir.ui.view">
+            <field name="name">montecarlo.project.result.kanban</field>
+            <field name="model">montecarlo.project.result</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile" create="0">
+                    <field name="project_id"/>
+                    <field name="place"/>
+                    <field name="iterations"/>
+                    <field name="success_cases"/>
+                    <field name="viability"/>
+                    <field name="result_date"/>
+                    <field name="result_time"/>
+                    <field name="category" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <strong><span title="Place"><i class="fa fa-list-ol"/> <t t-esc="record.place.value"/> </span></strong>
+                                        <strong><span><t t-esc="record.project_id.value"/> </span></strong>
+                                    </div>
+                                    <div class="col-xs-6">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 text-muted">
+                                        <span><t t-esc="record.result_date.value"/> <t t-esc="record.result_time.value"/></span>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span class="pull-right text-right">
+                                            <span title="Iterations"><i class="fa fa-spinner"/> <t t-esc="record.iterations.value"/> </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <strong><span title="Category"><t t-esc="record.category.value"/></span></strong>
+                                    </div>
+                                    <div class="col-xs-6 pull-right text-right">
+                                        <span title="Viability"><t t-esc="record.viability.value"/> <i class="fa fa-percent"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+		
+		<record id="montecarlo_project_result_search" model="ir.ui.view">
+            <field name="name">montecarlo.project.result.search</field>
+            <field name="model">montecarlo.project.result</field>
+            <field name="arch" type="xml">
+                <search string="Search Projects">
+                	<!--field string="Result Time" name="result_time" filter_domain="[('result_time','ilike',self)]"/-->
+                	<filter string="This Day" name="thisday" domain="['|', ('result_date', '=', False),('result_date','=', time.strftime('%%Y-%%m-%%d'))]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_by_project_id" string="Project" context="{'group_by': 'project_id'}"/>
+                        <filter string="Place" context="{'group_by': 'place'}"/>
+                        <filter string="Result Date(days)" context="{'group_by': 'result_date:day'}"/>
+                        <filter string="Result Time" context="{'group_by': 'result_time'}"/>
+                        <filter string="Iterations" context="{'group_by': 'iterations'}"/>
+                        <filter string="Category" context="{'group_by': 'category'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+		
+		<!-- Action Project Result -->
+		<record id="action_montecarlo_project_result" model="ir.actions.act_window">
+			<field name="name">Projects</field>
+			<field name="res_model">montecarlo.project.result</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,pivot</field>
+			<field name="view_id" eval="False" />
+		</record>
+		
+		<!-- Action Project Result Tree View -->
+		<record id="action_montecarlo_project_result_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1" />
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="montecarlo_project_result_tree" />
+			<field name="act_window_id" ref="action_montecarlo_project_result" />
+		</record>
+		
+	</data>
+</odoo>

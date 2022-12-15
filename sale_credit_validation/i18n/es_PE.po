@@ -1,0 +1,488 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* sale_credit_validation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-09 10:16+0000\n"
+"PO-Revision-Date: 2018-07-09 10:16+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_credit_validation
+#: model:mail.template,body_html:sale_credit_validation.email_template_sale_manager
+msgid "\n"
+"\n"
+"<p>Dear ${ctx['name']},\n"
+"\n"
+"<p>Please approve sale order  ${object.name}.\n"
+"\n"
+"           <div style=\"width: 375px; margin: 0px; padding: 0px; background-color: #8E0000; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;\">\n"
+"       <h3 style=\"margin: 0px; padding: 2px 14px; font-size: 12px; color: #DDD;\">\n"
+"           <strong style=\"text-transform:uppercase;\">${object.company_id.name}</strong></h3>\n"
+"   </div>\n"
+"   <div style=\"width: 347px; margin: 0px; padding: 5px 14px; line-height: 16px; background-color: #F2F2F2;\">\n"
+"       <span style=\"color: #222; margin-bottom: 5px; display: block; \">\n"
+"           ${object.company_id.partner_id.sudo().with_context(show_address=True, html_format=True).name_get()[0][1] | safe}\n"
+"       </span>\n"
+"       % if object.company_id.phone:\n"
+"           <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"               Phone:&nbsp; ${object.company_id.phone}\n"
+"           </div>\n"
+"       % endif\n"
+"       % if object.company_id.website:\n"
+"           <div>\n"
+"               Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"           </div>\n"
+"       %endif\n"
+"       <p></p>\n"
+"   </div>\n"
+"            "
+msgstr "\n"
+"\n"
+"<p>Estimado ${ctx['name']},\n"
+"\n"
+"<p>Porfavor apruebe la cotización  ${object.name}.\n"
+"\n"
+"           <div style=\"width: 375px; margin: 0px; padding: 0px; background-color: #8E0000; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;\">\n"
+"       <h3 style=\"margin: 0px; padding: 2px 14px; font-size: 12px; color: #DDD;\">\n"
+"           <strong style=\"text-transform:uppercase;\">${object.company_id.name}</strong></h3>\n"
+"   </div>\n"
+"   <div style=\"width: 347px; margin: 0px; padding: 5px 14px; line-height: 16px; background-color: #F2F2F2;\">\n"
+"       <span style=\"color: #222; margin-bottom: 5px; display: block; \">\n"
+"           ${object.company_id.partner_id.sudo().with_context(show_address=True, html_format=True).name_get()[0][1] | safe}\n"
+"       </span>\n"
+"       % if object.company_id.phone:\n"
+"           <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"               Phone:&nbsp; ${object.company_id.phone}\n"
+"           </div>\n"
+"       % endif\n"
+"       % if object.company_id.website:\n"
+"           <div>\n"
+"               Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"           </div>\n"
+"       %endif\n"
+"       <p></p>\n"
+"   </div>\n"
+"            "
+
+#. module: sale_credit_validation
+#: model:mail.template,body_html:sale_credit_validation.email_template_sale_refuse
+msgid "\n"
+"\n"
+"<p>Dear ${ctx['name']},\n"
+"\n"
+"<p>Your Sale Order: ${object.name} is refused by ${ctx['manager_name']} due to ${ctx['reason']}.\n"
+"\n"
+"           <div style=\"width: 375px; margin: 0px; padding: 0px; background-color: #8E0000; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;\">\n"
+"       <h3 style=\"margin: 0px; padding: 2px 14px; font-size: 12px; color: #DDD;\">\n"
+"           <strong style=\"text-transform:uppercase;\">${object.company_id.name}</strong></h3>\n"
+"   </div>\n"
+"   <div style=\"width: 347px; margin: 0px; padding: 5px 14px; line-height: 16px; background-color: #F2F2F2;\">\n"
+"       <span style=\"color: #222; margin-bottom: 5px; display: block; \">\n"
+"           ${object.company_id.partner_id.sudo().with_context(show_address=True, html_format=True).name_get()[0][1] | safe}\n"
+"       </span>\n"
+"       % if object.company_id.phone:\n"
+"           <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"               Phone:&nbsp; ${object.company_id.phone}\n"
+"           </div>\n"
+"       % endif\n"
+"       % if object.company_id.website:\n"
+"           <div>\n"
+"               Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"           </div>\n"
+"       %endif\n"
+"       <p></p>\n"
+"   </div>\n"
+"            "
+msgstr "\n"
+"\n"
+"<p>Estimado ${ctx['name']},\n"
+"\n"
+"<p>Su cotización: ${object.name} fue rechazada por ${ctx['manager_name']} debido a ${ctx['reason']}.\n"
+"\n"
+"           <div style=\"width: 375px; margin: 0px; padding: 0px; background-color: #8E0000; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;\">\n"
+"       <h3 style=\"margin: 0px; padding: 2px 14px; font-size: 12px; color: #DDD;\">\n"
+"           <strong style=\"text-transform:uppercase;\">${object.company_id.name}</strong></h3>\n"
+"   </div>\n"
+"   <div style=\"width: 347px; margin: 0px; padding: 5px 14px; line-height: 16px; background-color: #F2F2F2;\">\n"
+"       <span style=\"color: #222; margin-bottom: 5px; display: block; \">\n"
+"           ${object.company_id.partner_id.sudo().with_context(show_address=True, html_format=True).name_get()[0][1] | safe}\n"
+"       </span>\n"
+"       % if object.company_id.phone:\n"
+"           <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"               Phone:&nbsp; ${object.company_id.phone}\n"
+"           </div>\n"
+"       % endif\n"
+"       % if object.company_id.website:\n"
+"           <div>\n"
+"               Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"           </div>\n"
+"       %endif\n"
+"       <p></p>\n"
+"   </div>\n"
+"            "
+
+#. module: sale_credit_validation
+#: code:addons/sale_credit_validation/models/sale.py:97
+#: code:addons/sale_credit_validation/models/sale.py:124
+#, python-format
+msgid " (Approval Waiting)"
+msgstr " (Esperando Aprobación)"
+
+#. module: sale_credit_validation
+#: code:addons/sale_credit_validation/wizard/sale_order_refuse_wizard.py:29
+#: code:addons/sale_credit_validation/wizard/sale_order_refuse_wizard.py:37
+#, python-format
+msgid " Refused"
+msgstr " Rechazado"
+
+#. module: sale_credit_validation
+#: model:mail.template,subject:sale_credit_validation.email_template_sale_refuse
+msgid "${ctx['subject']}"
+msgstr ""
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_account_manager_id
+msgid "Account Manager"
+msgstr "Gerente"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_account_manager_approve_date
+msgid "Account Manager Approval Date"
+msgstr "Fecha de aprobación de Gerencia"
+
+#. module: sale_credit_validation
+#: code:addons/sale_credit_validation/wizard/sale_order_refuse_wizard.py:38
+#, python-format
+msgid "Account Manager: "
+msgstr ""
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update_name
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit_name
+msgid "Amount"
+msgstr "Monto"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_approve_account_manager_id
+msgid "Approve Account Manager"
+msgstr "Aprobación de Gerencia"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_approve_charge_manager_id
+msgid "Approve Charge Manager"
+msgstr "Aprobación de Cobranza"
+
+#. module: sale_credit_validation
+#: model:ir.ui.view,arch_db:sale_credit_validation.view_order_form_inherit_sale_credit_validation
+msgid "Approve Details"
+msgstr "Detalles de Aprobación"
+
+#. module: sale_credit_validation
+#: model:ir.ui.view,arch_db:sale_credit_validation.credit_limit_update_view_form
+#: model:ir.ui.view,arch_db:sale_credit_validation.sale_order_refuse_wizard_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: sale_credit_validation
+#: model:ir.ui.view,arch_db:sale_credit_validation.sale_order_view_search_inherit_quotation_02
+#: model:ir.ui.view,arch_db:sale_credit_validation.view_order_form_inherit_sale_credit_validation
+msgid "Charge Approval"
+msgstr "Aprobación de Cobranza"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_charge_manager_id
+msgid "Charge Manager"
+msgstr "Jefe de Cobranzas"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_charge_manager_approve_date
+msgid "Charge Manager Approval Date"
+msgstr "Fecha de aprobración del Jefe de Cobranzas"
+
+#. module: sale_credit_validation
+#: code:addons/sale_credit_validation/wizard/sale_order_refuse_wizard.py:30
+#, python-format
+msgid "Charge Manager: "
+msgstr "Jefe de Cobranzas: "
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update_partner_id
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit_partner_id
+msgid "Client"
+msgstr "Cliente"
+
+#. module: sale_credit_validation
+#: model:ir.model,name:sale_credit_validation.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update_company_id
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit_company_id
+msgid "Company"
+msgstr ""
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update_company_currency_id
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit_company_currency_id
+msgid "Company Currency"
+msgstr ""
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update_create_uid
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit_create_uid
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_refuse_wizard_create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update_create_date
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit_create_date
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_refuse_wizard_create_date
+msgid "Created on"
+msgstr ""
+
+#. module: sale_credit_validation
+#: model:ir.actions.act_window,name:sale_credit_validation.sale_credit_validation_action
+#: model:ir.model,name:sale_credit_validation.model_res_partner_credit_limit
+#: model:ir.ui.view,arch_db:sale_credit_validation.view_partner_form_inherit_sale_credit_validation
+msgid "Credit Limit"
+msgstr "Límite de Crédito"
+
+#. module: sale_credit_validation
+#: model:ir.ui.view,arch_db:sale_credit_validation.view_company_form_inherit_sale_credit_validation
+msgid "Credit Limit Setting"
+msgstr "Configuración del Límite de Crédito"
+
+#. module: sale_credit_validation
+#: model:ir.actions.act_window,name:sale_credit_validation.sale_credit_validation_action_update
+msgid "Credit Limit Update"
+msgstr "Actualizar Límite de Crédito"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_company_credit_limit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_config_settings_credit_limit_validation_setting
+msgid "Credit Limit Validation"
+msgstr "Validación del Límite de Crédito"
+
+#. module: sale_credit_validation
+#: code:addons/sale_credit_validation/models/sale.py:80
+#, python-format
+msgid "Credit limit expired or 0.00 for the Client \"%s\"."
+msgstr "Límite de Crédito expirado o 0.00 para el Cliente \"%s\"."
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_credit_limit_validation
+msgid "Credit limit validation"
+msgstr "Validación del Límite de Crédito"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update_display_name
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit_display_name
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_refuse_wizard_display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update_finish_date
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit_finish_date
+msgid "Finish date"
+msgstr "Fecha Fin"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update_id
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit_id
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_refuse_wizard_id
+msgid "ID"
+msgstr ""
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update___last_update
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit___last_update
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_refuse_wizard___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update_write_uid
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit_write_uid
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_refuse_wizard_write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update_write_date
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit_write_date
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_refuse_wizard_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sale_credit_validation
+#: model:ir.ui.view,arch_db:sale_credit_validation.sale_order_view_search_inherit_quotation_02
+#: model:ir.ui.view,arch_db:sale_credit_validation.view_order_form_inherit_sale_credit_validation
+msgid "Manager Approval"
+msgstr "Aprobación de Gerencia"
+
+#. module: sale_credit_validation
+#: model:ir.model,name:sale_credit_validation.model_res_partner
+msgid "Partner"
+msgstr ""
+
+#. module: sale_credit_validation
+#: code:addons/sale_credit_validation/models/sale.py:112
+#, python-format
+msgid "Please select Account Manager."
+msgstr "Por favor seleccione un Jefe de Gerencia"
+
+#. module: sale_credit_validation
+#: code:addons/sale_credit_validation/models/sale.py:86
+#, python-format
+msgid "Please select Charge Manager."
+msgstr "Por favor seleccione un Jefe de Crobranzas"
+
+#. module: sale_credit_validation
+#: model:ir.ui.view,arch_db:sale_credit_validation.view_order_form_inherit_sale_credit_validation
+msgid "Refuse"
+msgstr "Rechazo"
+
+#. module: sale_credit_validation
+#: model:ir.ui.view,arch_db:sale_credit_validation.view_order_form_inherit_sale_credit_validation
+msgid "Refuse Details"
+msgstr "Detalles de Rechazo"
+
+#. module: sale_credit_validation
+#: model:ir.ui.view,arch_db:sale_credit_validation.sale_order_refuse_wizard_form
+msgid "Refuse Now"
+msgstr "Rechazo"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_refuse_reason_note
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_refuse_wizard_note
+#: model:ir.ui.view,arch_db:sale_credit_validation.view_order_form_inherit_sale_credit_validation
+msgid "Refuse Reason"
+msgstr "Razón del rechazo"
+
+#. module: sale_credit_validation
+#: model:ir.actions.act_window,name:sale_credit_validation.action_sale_order_refuse_wizard
+msgid "Refuse Sale Order"
+msgstr "Cotización rechazada"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_refuse_user_id
+msgid "Refused By"
+msgstr "Rechazado por"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_sale_order_refuse_date
+msgid "Refused Date"
+msgstr "Fecha de rechazo"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update_user_id
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit_user_id
+msgid "Responsible"
+msgstr "Responsable"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_company_email_template_id
+msgid "Sale Approval Email Template"
+msgstr "Plantilla(email) de Aprobación de Cotización"
+
+#. module: sale_credit_validation
+#: model:mail.template,report_name:sale_credit_validation.email_template_sale_refuse
+msgid "Sale Order"
+msgstr "Cotización"
+
+#. module: sale_credit_validation
+#: model:ir.actions.act_window,name:sale_credit_validation.action_sale_charge_approval
+#: model:ir.ui.menu,name:sale_credit_validation.menu_action_orders_charge
+msgid "Sale Order Charge Approve"
+msgstr "Cotización: Aprobación de Cobranzas"
+
+#. module: sale_credit_validation
+#: model:ir.actions.act_window,name:sale_credit_validation.action_sale_manager_approval
+#: model:ir.ui.menu,name:sale_credit_validation.menu_action_orders_manager
+msgid "Sale Order Manager Approve"
+msgstr "Cotización: Aprobración de Gerencia"
+
+#. module: sale_credit_validation
+#: model:ir.ui.view,arch_db:sale_credit_validation.sale_order_refuse_wizard_form
+msgid "Sale Order Refuse Form"
+msgstr "Rechazo de cotización"
+
+#. module: sale_credit_validation
+#: code:addons/sale_credit_validation/models/sale.py:97
+#: code:addons/sale_credit_validation/models/sale.py:124
+#: code:addons/sale_credit_validation/wizard/sale_order_refuse_wizard.py:29
+#: code:addons/sale_credit_validation/wizard/sale_order_refuse_wizard.py:37
+#, python-format
+msgid "Sale Order: "
+msgstr "Cotización: "
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_company_refuse_template_id
+msgid "Sale Refuse Email Template"
+msgstr "Plantilla(email) de Rechazo de Cotización"
+
+#. module: sale_credit_validation
+#: model:ir.model,name:sale_credit_validation.model_sale_order
+msgid "Sales Order"
+msgstr "Cotizaciones"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_spent_money
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_users_spent_money
+#: model:ir.model.fields,field_description:sale_credit_validation.field_student_file_spent_money
+msgid "Spent Money"
+msgstr "Dinero Gastado"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update_start_date
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit_start_date
+msgid "Start date"
+msgstr "Fecha inicio"
+
+#. module: sale_credit_validation
+#: model:ir.ui.view,arch_db:sale_credit_validation.credit_limit_update_view_form
+msgid "Update"
+msgstr "Actualizar"
+
+#. module: sale_credit_validation
+#: model:ir.model.fields,field_description:sale_credit_validation.field_credit_limit_update_valid
+#: model:ir.model.fields,field_description:sale_credit_validation.field_res_partner_credit_limit_valid
+msgid "Valid"
+msgstr "Válido"
+
+#. module: sale_credit_validation
+#: model:ir.ui.view,arch_db:sale_credit_validation.view_sale_config_settings_inherit_sale_credit_validation
+msgid "Validation"
+msgstr "Validación"
+
+#. module: sale_credit_validation
+#: model:ir.model,name:sale_credit_validation.model_credit_limit_update
+msgid "credit.limit.update"
+msgstr ""
+
+#. module: sale_credit_validation
+#: model:ir.ui.view,arch_db:sale_credit_validation.sale_order_refuse_wizard_form
+msgid "or"
+msgstr "o"
+
+#. module: sale_credit_validation
+#: model:ir.model,name:sale_credit_validation.model_sale_config_settings
+msgid "sale.config.settings"
+msgstr ""
+
+#. module: sale_credit_validation
+#: model:ir.model,name:sale_credit_validation.model_sale_order_refuse_wizard
+msgid "sale.order.refuse.wizard"
+msgstr ""
+

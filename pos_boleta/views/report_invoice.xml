@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="report_invoice_document_inherit" inherit_id="account.report_invoice_document" >
+		    <xpath expr="//div[@class='row'][2]" position="after">
+			    <div class="row">
+	                <div class="col-xs-1" t-if="o.amount_to_text">
+	                    <strong>SON:</strong>
+	                </div>
+                    <div class="col-xs-8" t-if="o.amount_to_text">
+	                    <p t-field="o.amount_to_text"/>
+	                </div>
+	            </div>
+		    </xpath>
+		</template>
+	</data>
+</odoo>

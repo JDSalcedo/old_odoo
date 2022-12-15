@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- Sobreescritura de 'Duplicates' -->
+		<report 
+            id="account.account_invoice_action_report_duplicate"
+            model="account.invoice"
+            string="Boletas"
+            report_type="qweb-pdf"
+            name="pos_boleta.report_invoice_boleta"
+            file="pos_boleta.report_invoice_boleta"
+            attachment_use="False"
+        />
+        
+		<!-- QWeb Reports -->
+		<!-- Factura con IGV -->
+        <report 
+            id="account_pre_invoices"
+            model="account.invoice"
+            string="Factura de venta(+IGV)S/F"
+            report_type="qweb-pdf"
+            name="pos_boleta.report_pre_invoice"
+            file="pos_boleta.report_pre_invoice"
+            attachment_use="False"
+        />
+        <!-- Factura sin IGV -->
+        <report 
+            id="account_pre_invoices_sigv"
+            model="account.invoice"
+            string="Factura de venta(-IGV)S/F"
+            report_type="qweb-pdf"
+            name="pos_boleta.report_pre_invoice_sigv"
+            file="pos_boleta.report_pre_invoice_sigv"
+            attachment_use="False"
+        />
+	    
+	    <!-- Boleta con IGV -->
+        <report 
+            id="account_pre_invoices_boleta"
+            model="account.invoice"
+            string="Boleta de Venta(+IGV)S/F"
+            report_type="qweb-pdf"
+            name="pos_boleta.report_pre_invoice_boleta"
+            file="pos_boleta.report_pre_invoice_boleta"
+        />
+	    
+	</data>
+</odoo>

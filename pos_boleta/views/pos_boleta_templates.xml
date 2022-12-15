@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	
+	<!--
+		Copyright 2017 Juan D. Salcedo Salazar, salcedo.salazar@gmail.com
+		License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html). 
+	-->
+
+	<template id="assets" inherit_id="point_of_sale.assets">
+		<xpath expr="." position="inside">
+			<script type="text/javascript" src="/pos_boleta/static/src/js/models.js"></script>
+			<script type="text/javascript" src="/pos_boleta/static/src/js/screens.js"></script>
+		</xpath>
+	</template>
+	
+</odoo>

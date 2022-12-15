@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <record id="view_sale_config_settings_inherit_sale_credit_validation" model="ir.ui.view">
+        <field name="name">view.sale.config.settings.inherit.sale.credit.validation</field>
+        <field name="model">sale.config.settings</field>
+        <field name="inherit_id" ref="sales_team.view_sale_config_settings"/>
+        <field name="arch" type="xml">
+            <div id="main" position="inside">
+                <group string="Validation" name="config_validation">
+                    <field name="credit_limit_validation_setting"/>
+                </group>
+            </div>
+        </field>
+    </record>
+
+</odoo>

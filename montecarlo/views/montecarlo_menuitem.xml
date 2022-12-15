@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- Top menu item -->
+		<menuitem 
+			id="menu_montecarlo"
+			name="Monte Carlo"
+			web_icon="montecarlo,static/description/icon.png"
+			sequence="70" />
+		<!-- Icon made by 'Nikita Golubev' from www.flaticon.com --> 
+		<menuitem
+			id="menu_montecarlo_projects"
+			name="Projects"
+			parent="menu_montecarlo"
+			sequence="1" />
+		<menuitem
+			id="menu_montecarlo_results"
+			name="Results"
+			parent="menu_montecarlo"
+			sequence="2" />
+		<!--menuitem
+			id="menu_montecarlo_activities"
+			name="Activities"
+			parent="menu_montecarlo"
+			sequence="3" /-->
+		
+	</data>
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="credit_limit_update_view_form" model="ir.ui.view">
+        <field name="name">credit.limit.update.view.form</field>
+        <field name="model">credit.limit.update</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="finish_date"/>
+                            <field name="name"/>
+                            <field name="valid"/>
+                        </group>
+                        <group>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="user_id" readonly="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="company_currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="update_partner_credit_limit" string="Update" type="object" class="btn-primary" />
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_credit_validation_action_update" model="ir.actions.act_window">
+        <field name="name">Credit Limit Update</field>
+        <field name="res_model">credit.limit.update</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="credit_limit_update_view_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

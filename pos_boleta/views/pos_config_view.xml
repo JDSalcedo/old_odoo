@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!--
+		Copyright 2017 Juan D. Salcedo Salazar, salcedo.salazar@gmail.com
+		License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html). 
+	-->
+	
+    <record id="view_pos_config_form_inherit" model="ir.ui.view">
+        <field name="name">view.pos.config.form.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_config_form"></field>
+        <field name="arch" type="xml">
+        	<xpath expr="//field[@name='invoice_journal_id']" position="after">
+        		<field name="boleta_journal_id" widget="selection"/>
+        	</xpath>
+        	<!-- Por tema de renderizado se decide colocar este campo al final de todos -->
+        	<xpath expr="//field[@name='currency_id']" position="after">
+        		<field name="final_journal_id" invisible="1"/>
+        	</xpath>
+        	
+        	<xpath expr="//group[@name='receipt']" position='before'>
+        		<group string="Print Server Local" >
+        			<group name="printer" invisible="1">
+        				<field name="local_printer_name" />
+        			</group>
+        			<group name="server">
+        				<field name="local_server_active"/>
+	        			<field name="local_server_ip" />
+	        			<field name="local_server_port" />
+        			</group>
+        		</group>
+			</xpath>
+        	
+        </field>
+    </record>
+</odoo>

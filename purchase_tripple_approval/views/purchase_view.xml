@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="purchase_order_form_inherit_tripple_approval" model="ir.ui.view">
+        <field name="name">purchase.order.form.view</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header" position="inside">
+            	<button name="button_department_approval" string="Department Approval"
+            		type="object" class="oe_highlight" states="department_approval" groups="purchase_tripple_approval.group_department_manager"/>
+                <button name="button_assembly_approval" string="Assembly Approval" 
+                        type="object" class="oe_highlight" states="assembly_approval" groups="purchase_tripple_approval.group_assembly_manager"/>
+                <button name="button_director_approval" string="Director Approval" 
+                        type="object" class="oe_highlight" states="director_approval" groups="purchase_tripple_approval.group_purchase_director"/>
+                <button name="%(action_purchase_order_refuse_wiz)d" string="Refuse" 
+                        type="action" states="department_approval,assembly_approval,director_approval"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="Approve Details" string="Approve Details">
+                    <group name="approv_details" string="Approve Details">
+                        <group>
+                            <field name="approve_dept_manager_id"/>
+                            <field name="approve_assembly_manager_id"/>
+                            <field name="approve_director_manager_id"/>
+                        </group>
+                        <group>
+                            <field name="dept_manager_approve_date"/>
+                            <field name="assembly_manager_approve_date"/>
+                            <field name="director_manager_approve_date"/>
+                        </group>
+                        <group>
+                            <field name="dept_manager_id"/>
+                            <field name="assembly_manager_id"/>
+                            <field name="director_manager_id"/>
+                            <field name="purchase_user_id" invisible="True"/>
+                        </group>
+                    </group>
+                    <group name="refuse_po_grp" string="Refuse Details">
+                        <group>
+                            <field name="po_refuse_user_id"/>
+                        </group>
+                        <group>
+                            <field name="po_refuse_date"/>
+                        </group>
+                        <label for="refuse_reason_note" string="Refuse Reason"/>
+                        <field name="refuse_reason_note" nolabel="1"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//button[@name='button_draft']" position="attributes">
+                <attribute name="states">refuse</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="purchase_order_search_inherit_tripple_approval">
+        <field name="name">purchase.order.list.select.inherit.tripple.approval</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='to_approve']" position="after">
+            	<filter name="department_approval" string="Department Approval" domain="[('state', '=', 'department_approval')]"/>
+                <filter name="assembly_approval" string="Assembly Approval" domain="[('state', '=', 'assembly_approval')]"/>
+                <filter name="director_approval" string="Director Approval" domain="[('state', '=', 'director_approval')]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase.purchase_form_action" model="ir.actions.act_window">
+            <field name="context">{'search_default_todo':1, 'show_purchase': True, 'search_default_to_approve':1}</field>
+        </record>
+
+    <record model="ir.actions.act_window" id="action_purchase_department_approve">
+            <field name="name">Purchase Order Purchase/Department Approve</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="context">{'search_default_department_approval':1}</field>
+<!--            <field name="domain">[('state', '=', 'to approve')]</field-->
+    </record>
+
+    <record model="ir.actions.act_window" id="action_assembly_manager_approve">
+            <field name="name">Purchase Order Assembly Approve</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="context">{'search_default_assembly_approval':1}</field>
+<!--            <field name="domain">[('state', '=', 'assembly_approval')]</field-->
+    </record>
+
+    <record model="ir.actions.act_window" id="action_director_manager_approve">
+            <field name="name">Purchase Order Director Approve</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="context">{'search_default_director_approval':1}</field>
+<!--            <field name="domain">[('state', '=', 'director_approval')]</field-->
+    </record>
+
+    <menuitem id="menu_purchase_department_approve" name="Purchase Order Purchase/Department Approve" action="action_purchase_department_approve" parent="purchase.menu_procurement_management" groups="purchase_tripple_approval.group_department_manager"/>
+
+    <menuitem id="menu_assembly_manager_approve" name="Purchase Order Assembly Approve" action="action_assembly_manager_approve" parent="purchase.menu_procurement_management" groups="purchase_tripple_approval.group_assembly_manager"/>
+
+    <menuitem id="menu_director_manager_approve" name="Purchase Order Director Approve" action="action_director_manager_approve" parent="purchase.menu_procurement_management" groups="purchase_tripple_approval.group_purchase_director"/>
+
+</odoo>

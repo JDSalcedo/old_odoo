@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_montecarlo_project,montecarlo.project,model_montecarlo_project,group_montecarlo_manager,1,1,1,1
+access_montecarlo_sprint,montecarlo.sprint,model_montecarlo_sprint,group_montecarlo_manager,1,1,1,1
+access_montecarlo_activity,montecarlo.activity,model_montecarlo_activity,group_montecarlo_manager,1,1,1,1
+access_montecarlo_activity_transition,montecarlo.activity.transition,model_montecarlo_activity_transition,group_montecarlo_manager,1,1,1,1
+access_montecarlo_project_result,montecarlo.project.result,model_montecarlo_project_result,group_montecarlo_manager,1,1,1,1
+access_montecarlo_process,montecarlo.process,model_montecarlo_process,group_montecarlo_manager,1,1,1,1
+access_montecarlo_process_transition,montecarlo.process.transition,model_montecarlo_process_transition,group_montecarlo_manager,1,1,1,1

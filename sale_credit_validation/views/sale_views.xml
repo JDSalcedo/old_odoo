@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_order_form_inherit_sale_credit_validation" model="ir.ui.view">
+        <field name="name">view.order.form.inherit.sale.credit.validation</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header" position="inside">
+                <button name="button_charge_approval" string="Charge Approval"
+                        type="object" class="oe_highlight" states="charge_approval"
+                        groups="account.group_account_invoice"/>
+                <button name="button_manager_approval" string="Manager Approval"
+                        type="object" class="oe_highlight" states="manager_approval"
+                        groups="account.group_account_user"/>
+                <button name="%(action_sale_order_refuse_wizard)d" string="Refuse"
+                        type="action" states="charge_approval,manager_approval"
+                        groups="account.group_account_invoice"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="credit_limit_validation" invisible="1"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Approve Details" attrs="{'invisible': [('credit_limit_validation', '=', False)]}">
+                    <group string="Approve Details">
+                        <group>
+                            <field name="approve_charge_manager_id" readonly="1"/>
+                            <field name="approve_account_manager_id" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="charge_manager_approve_date" readonly="1"/>
+                            <field name="account_manager_approve_date" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="charge_manager_id" attrs="{'readonly': [('state','in',['sale','done','refuse'])]}"/>
+                            <field name="account_manager_id" attrs="{'readonly': [('state','in',['sale','done','refuse'])]}"/>
+                        </group>
+                    </group>
+                    <group string="Refuse Details">
+                        <group>
+                            <field name="refuse_user_id" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="refuse_date" readonly="1"/>
+                        </group>
+                        <label for="refuse_reason_note" string="Refuse Reason"/>
+                        <field name="refuse_reason_note" nolabel="1" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_view_search_inherit_quotation_02" model="ir.ui.view">
+        <field name="name">sale.order.search.inherit.quotation.02</field>
+        <field name="model">sale.order</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='sales']" position="after">
+                <separator/>
+                <filter name="charge_approval" string="Charge Approval" domain="[('state', '=', 'charge_approval')]"/>
+                <filter name="manager_approval" string="Manager Approval" domain="[('state', '=', 'manager_approval')]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_sale_charge_approval" model="ir.actions.act_window">
+        <field name="name">Sale Order Charge Approve</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+        <field name="context">{'search_default_charge_approval':1}</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('sale.view_quotation_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('sale.view_order_form')})]"/>
+        <field name="search_view_id" ref="sale_order_view_search_inherit_quotation_02"/>
+    </record>
+
+    <record id="action_sale_manager_approval" model="ir.actions.act_window">
+        <field name="name">Sale Order Manager Approve</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+        <field name="context">{'search_default_manager_approval':1}</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('sale.view_quotation_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('sale.view_order_form')})]"/>
+        <field name="search_view_id" ref="sale_order_view_search_inherit_quotation_02"/>
+    </record>
+
+    <!--<record id="action_sale_charge_approval_view_tree" model="ir.actions.act_window.view">-->
+        <!--<field eval="1" name="sequence"/>-->
+        <!--<field name="view_mode">tree</field>-->
+        <!--<field name="view_id" ref="sale.view_quotation_tree"/>-->
+        <!--<field name="act_window_id" ref="action_sale_charge_approval"/>-->
+    <!--</record>-->
+
+    <!--<record id="action_sale_charge_approval_view_form" model="ir.actions.act_window.view">-->
+        <!--<field eval="2" name="sequence"/>-->
+        <!--<field name="view_mode">form</field>-->
+        <!--<field name="view_id" ref="sale.view_order_form"/>-->
+        <!--<field name="act_window_id" ref="action_sale_charge_approval"/>-->
+    <!--</record>-->
+
+    <menuitem
+            action="action_sale_charge_approval"
+            id="menu_action_orders_charge"
+            parent="account.menu_finance_receivables"
+            sequence="5"
+            groups="account.group_account_invoice"/>
+    <menuitem
+            action="action_sale_manager_approval"
+            id="menu_action_orders_manager"
+            parent="account.menu_finance_receivables"
+            sequence="6"
+            groups="account.group_account_user"/>
+
+</odoo>
